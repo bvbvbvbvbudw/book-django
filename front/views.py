@@ -6,7 +6,7 @@ from django.db.models import Avg
 def index(request):
     books = Book.objects.all()
     if request.method == 'POST':
-        form = BookForm(request.POST, request.FILES)  # Передаем request.POST и request.FILES для обработки данных формы
+        form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         else:
@@ -48,15 +48,14 @@ def detail(request, pk):
             form = CommentForm(request.POST)
             if form.is_valid():
                 comment = form.save(commit=False)
-                comment.user = request.user  # Предполагается, что пользователь авторизован
+                comment.user = request.user
                 comment.book = book
                 comment.save()
 
-                # Пересчитываем рейтинг книги
                 book.rating = Comment.objects.filter(book=book).aggregate(Avg('rating'))['rating__avg'] or 0
                 book.save()
 
-                return redirect('detail', pk=pk)  # Перенаправляем на страницу деталей книги
+                return redirect('detail', pk=pk)
         else:
             form = CommentForm()
         return render(request, 'front/detail.html', {'book': book, 'comments': comments, 'form': form})
