@@ -1,0 +1,12 @@
+{% extends 'front/base.html' %}
+{% block title %}
+    Create page
+{% endblock %}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}

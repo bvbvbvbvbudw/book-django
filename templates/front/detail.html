@@ -1,0 +1,55 @@
+{% extends 'front/base.html' %}
+{% block title %}
+    Book: {{ book.title }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="wrapper__item">
+        <div class="preview">
+            <img src="{{ book.preview }}" alt="preview book">
+            <div class="controls">
+                <a href="{{ book.file }}">Read this book</a>
+                <a href="{{ book.file }}/download">Download this book</a>
+            </div>
+        </div>
+        <div class="container-information">
+            <p>Title: <strong>{{ book.title }}</strong></p>
+            <p><strong>Category: </strong>{{ book.category }}</p>
+            <p><strong>Author: </strong>{{ book.author }}</p>
+            <div class="small-info">
+                <p><strong>Date: </strong>{{ book.created_at }}</p>
+                <p><strong>Comments: </strong> {{ comments|length }}</p>
+            </div>
+            <p><strong>Average rating: </strong>{{ book.rating }}</p>
+            <p><strong>Description: </strong>{{ book.description }}</p>
+
+            <ul>
+                {% for comment in comments %}
+                    <li>
+                        <strong>{{ comment.user.username }}</strong>: {{ comment.text }} || {{ comment.rating }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    {#    <h1>{{ book.title }}</h1>#}
+    {#    <ul>#}
+    {#        {% for comment in comments %}#}
+    {#            <li>#}
+    {#                <strong>{{ comment.user.username }}</strong>: {{ comment.text }}#}
+    {#            </li>#}
+    {#        {% endfor %}#}
+    {#    </ul>#}
+    {#    <form method="post">#}
+    {#        {% csrf_token %}#}
+    {#        {{ form.as_p }}#}
+    {#        <button type="submit">Оставить комментарий</button>#}
+    {#    </form>#}
+{% endblock %}

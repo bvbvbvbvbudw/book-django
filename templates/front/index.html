@@ -1,0 +1,23 @@
+{% extends 'front/base.html' %}
+
+{% block title %}
+    Book Site
+{% endblock %}
+
+{% block content %}
+    <div class="container__main-book">
+        {% for book in books %}
+            <div class="item">
+                <a href="{% url 'detail' book.id %}" class="wrapper__link-item">
+                    <img src="{{ book.preview }}" alt="preview">
+                    <p><strong>{{ book.title }}</strong></p>
+                    <p>{{ book.author }}</p>
+                    <div>
+                        {{ book.rating }}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    
+    </div>
+{% endblock %}

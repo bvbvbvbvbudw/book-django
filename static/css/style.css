@@ -1,0 +1,72 @@
+body{
+    margin: 0 auto!important;
+    padding: 0;
+    width: 80%;
+}
+/*.wrapper-site{*/
+/*    width: 80%;*/
+/*    margin: 0 auto;*/
+/*}*/
+header{
+    padding-top: 1rem;
+    text-align: center!important;
+}
+#logo__img{
+    width: 375px;
+    height: 65px;
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+header .list__control{
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+}
+.container__main-book .item img{
+    width: 269px;
+    height: 430px;
+}
+.container__main-book .item p{
+    margin: 0;
+    padding: 0;
+}
+.wrapper__link-item{
+    text-decoration: none;
+    color: black;
+}
+.preview{
+    /*display: grid;*/
+    /*grid-auto-columns: 416px 50%;*/
+    /*flex-direction: column;*/
+}
+.preview .controls{
+    display: flex;
+    gap: 30px;
+        justify-content: center;
+    text-align: center;
+}
+.preview .controls a{
+    margin-top: 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: grey;
+    padding: 15px;
+}
+.preview img{
+    width: 416px;
+    height: 665px;
+}
+.wrapper__item{
+    display: flex;
+}
+.container-information{
+    margin-left: 100px
+}
